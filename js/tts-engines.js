@@ -970,7 +970,7 @@ function OpenaiTtsEngine() {
         ...(
           apiKey ? {
             "Authorization": "Bearer " + apiKey
-          } : null
+          } : {}
         )
       }
     })
@@ -1017,7 +1017,7 @@ function OpenaiTtsEngine() {
         ...(
           openaiCreds.apiKey ? {
             "Authorization": "Bearer " + openaiCreds.apiKey
-          } : null
+          } : {}
         )
       },
       body: JSON.stringify({
