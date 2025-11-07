@@ -966,7 +966,13 @@ function OpenaiTtsEngine() {
   var prefetchAudio
   this.test = async function({apiKey, url, voiceList}) {
     const res = await fetch(url + "/models", {
-      headers: {"Authorization": "Bearer " + apiKey}
+      headers: {
+        ...(
+          apiKey ? {
+            "Authorization": "Bearer " + apiKey
+          } : {}
+        )
+      }
     })
     if (!res.ok) {
       const {error} = await res.json()
@@ -1011,7 +1017,7 @@ function OpenaiTtsEngine() {
         ...(
           openaiCreds.apiKey ? {
             "Authorization": "Bearer " + openaiCreds.apiKey
-          } : null
+          } : {}
         )
       },
       body: JSON.stringify({
